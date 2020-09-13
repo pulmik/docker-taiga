@@ -2,7 +2,9 @@ version: '3'
 
 services:
   back:
-    image: dockertaiga/back:5.0.12
+    build: ../docker-taiga-back
+    image: pulmik/taiga-back:1.0
+    # image: dockertaiga/back:5.0.12
     container_name: taiga-back
     restart: unless-stopped
     depends_on:
@@ -17,7 +19,9 @@ services:
       - variables.env
 
   front:
-    image: dockertaiga/front:5.0.12
+    build: ../docker-taiga-front
+    image: pulmik/taiga-front:1.0
+    # image: dockertaiga/front:5.0.12
     container_name: taiga-front
     restart: unless-stopped
     networks:
@@ -39,7 +43,9 @@ services:
       - ./data/db:/var/lib/postgresql/data
 
   rabbit:
-    image: dockertaiga/rabbit
+    build: ../docker-taiga-rabbit
+    image: pulmik/taiga-rabbit:1.0
+    # image: dockertaiga/rabbit
     container_name: taiga-rabbit
     restart: unless-stopped
     networks:
@@ -56,7 +62,9 @@ services:
       - variables.env
 
   events:
-    image: dockertaiga/events
+    build: ../docker-taiga-events
+    image: pulmik/taiga-events:1.0
+    # image: dockertaiga/events
     container_name: taiga-events
     restart: unless-stopped
     depends_on:
@@ -67,7 +75,9 @@ services:
       - variables.env
 
   proxy:
-    image: dockertaiga/proxy
+    build: ../docker-taiga-proxy
+    image: pulmik/taiga-proxy:1.0
+    # image: dockertaiga/proxy
     container_name: taiga-proxy
     restart: unless-stopped
     depends_on:
